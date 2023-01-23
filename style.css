@@ -129,5 +129,76 @@ cursor: pointer;
     color: white;
     cursor: pointer;
 }
+#primeira-vela{
+    display: none;
+}
 
+.velas-anteriores{
+    width: 79%;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
 
+.vela-baixa{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(43, 137, 226);
+    color: white;
+    font-size: 0.7em;
+}
+
+.vela-baixa:hover{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(62, 145, 223, 0.952);
+    color: white;
+    cursor: pointer;
+}
+
+.vela-media{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-size: 0.7em;
+}
+
+.vela-media:hover{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(154, 74, 228, 0.959);
+    color: white;
+    cursor: pointer;
+}
+
+.vela-alta{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(220, 44, 236);
+    color: white;
+    font-size: 0.7em;
+}
+
+.vela-alta:hover{
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(214, 77, 226, 0.952);
+    color: white;
+    cursor: pointer;
+}
