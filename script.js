@@ -2,7 +2,6 @@ console.log('cassino')
 
 let creditoVisual = document.getElementById('credit');
 let credito = 1000;
-
 let multiplicadorInicial = document.getElementById('multiplicador-inicial');
 let multiplicadorAtual = multiplicadorInicial.value = 1;
 let incremento = 0.01;
@@ -14,9 +13,6 @@ let hitou = false;
 let click = true;
 let resultadoFinal;
 let historicoDeVelas = []
-
-//variável que ajuda a criar a lógica do multiplicador
-let randomNumber = Math.random() * 100;
 
 //variável referente a quantidade de millisegundos da variavel intervalo
 const velocidadePadrao = 100;
@@ -36,7 +32,11 @@ const game = {
         },
 
     random (){
-        let hitNumber = Math.random() * 180
+
+        let randomNumber = Math.random() * 100;
+        let hitNumber = Math.random() * 500;
+        console.log(hitNumber)
+        console.log(randomNumber)
             if(hitNumber < randomNumber && hitou == false){
                 hitou = true;
                 podeApostar = true;
@@ -71,7 +71,7 @@ const aposta = {
             existeAposta = false;
             credito = credito + valor.value * multiplicadorAtual
             creditoFormatado = credito.toFixed(2)
-            creditoVisual.innerText = `${creditoFormatado}$`
+            creditoVisual.innerText = `${creditoFormatado}R$`
             btnConfirmaAposta.innerText = 'RETIRADO!'
             console.log(`aposta encerrada com sucesso! retorno: ${valor.value * multiplicadorAtual}R$`)
             Vela(multiplicadorAtual)
@@ -83,7 +83,7 @@ const aposta = {
         if(existeAposta && hitou){
             credito = credito
             creditoFormatado = credito.toFixed(2)
-            creditoVisual.innerText = `${creditoFormatado}$`
+            creditoVisual.innerText = `${creditoFormatado}R$`
             console.log('você perdeu!')
             console.log('seu saldo atua é de:', credito)
             Vela(multiplicadorAtual)
@@ -93,7 +93,7 @@ const aposta = {
         else if (existeAposta == false && hitou){
             creditoFormatado = credito.toFixed(2)
             existeAposta = false;
-            creditoVisual.innerText = `${creditoFormatado}`
+            creditoVisual.innerText = `${creditoFormatado}R$`
             Vela(multiplicadorAtual)
             this.resetaAposta
         }
@@ -140,7 +140,7 @@ function Registra (valor){
 
 //essa função atualiza a quantidade de créditos disponivéis ao entrar na página
 function atualizaCreditoAoIniciar(){
-    creditoVisual.innerText = `${credito}`
+    creditoVisual.innerText = `${credito}.00 R$`
 }
 
 //função que cria viasualmente os multiplicadores anteriores
@@ -196,7 +196,7 @@ function guardaVelas(multiplicador){
 let intervalo = setInterval(game.start, velocidadePadrao)
 
 //constante que guarda o setInterval da função random
-const verificacao = setInterval(game.random, Math.random() * 4000)
+const verificacao = setInterval(game.random, 2000)
 
 
 atualizaCreditoAoIniciar();
