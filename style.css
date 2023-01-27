@@ -1,18 +1,54 @@
 *{
     padding: 0;
     margin: 0;
+ 
 }
 
 body{
     width: 100vw;
     height: 100vh;
+    background-color: rgb(241, 234, 241);
+}
+
+.nav-bar{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(36, 36, 36);
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+#credit-display{
+    color: white;
+    margin-right: 200px;
+    align-self: center;
+    background-color: rgb(247, 186, 21);
+    border-radius: 10px;
+    display: flex;
+    justify-content:space-evenly;
+    width: 150px;
+    height: 35px;
+}
+
+#credit{
+    color: rgb(39, 39, 39);
+    align-self: center;
+    letter-spacing: 0.5;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#icon-money{
+    max-width: 30px;
+    max-height: 30px;
+    align-self: center;
 }
 
 .container{
     width: 80%;
     height: 50%;
-    background-color: rgb(60, 61, 61);
     border-radius: 25px;
+    background-color: rgb(60, 61, 61); ;
     box-shadow: 3px 3px 10px rgb(121, 119, 119);
     margin: 0 auto;
 }
@@ -21,6 +57,7 @@ body{
     width: 80%;
     height: 80%;
     margin: 0 auto;
+    background-color: rgb(60, 61, 61); ;
 }
 
 #multiplicador-inicial{
@@ -28,6 +65,7 @@ body{
     text-align: center;
     padding-top: 120px;
     font-size: 3.5em;
+    font-family: 'Mulish', sans-serif;
 }
 
 .painel-container{
@@ -131,16 +169,17 @@ cursor: pointer;
 }
 #primeira-vela{
     display: none;
+    width: 0;
 }
 
 .velas-anteriores{
-    width: 79%;
+    width: 80%;
     height: 20px;
     margin: 0 auto;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row-reverse;
-    gap: 5px;
+    gap: 8px;
 }
 
 .vela-baixa{

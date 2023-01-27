@@ -1,8 +1,8 @@
-
 console.log('cassino')
 
 let creditoVisual = document.getElementById('credit');
 let credito = 1000;
+
 let multiplicadorInicial = document.getElementById('multiplicador-inicial');
 let multiplicadorAtual = multiplicadorInicial.value = 1;
 let incremento = 0.01;
@@ -12,8 +12,11 @@ let valor = document.getElementById('valor-de-aposta');
 let btnConfirmaAposta = document.getElementById('confirma-aposta1');
 let hitou = false;
 let click = true;
-let randomNumber = Math.random() * 100;
 let resultadoFinal;
+let historicoDeVelas = []
+
+//variável que ajuda a criar a lógica do multiplicador
+let randomNumber = Math.random() * 100;
 
 //variável referente a quantidade de millisegundos da variavel intervalo
 const velocidadePadrao = 100;
@@ -22,15 +25,15 @@ const velocidadePadrao = 100;
 const game = {
 
     start(){
-        if(hitou == false){
-            multiplicadorAtual =  multiplicadorAtual += incremento
-            multiplicadorInicial.innerText =  multiplicadorAtual.toFixed(2) + "X"      
-            resultadoFinal = multiplicadorAtual
-        }
-        if(existeAposta){
-            btnConfirmaAposta.innerText = 'RETIRAR'
-        }
-     },
+            if(hitou == false){
+                multiplicadorAtual =  multiplicadorAtual += incremento
+                multiplicadorInicial.innerText =  multiplicadorAtual.toFixed(2) + "X"      
+                resultadoFinal = multiplicadorAtual
+            }
+            if(existeAposta){
+                btnConfirmaAposta.innerText = 'RETIRAR'
+             }
+        },
 
     random (){
         let hitNumber = Math.random() * 180
@@ -42,7 +45,6 @@ const game = {
                 btnConfirmaAposta.style.backgroundColor = 'rgb(24, 248, 43)'
                 aposta.decolou();
                 game.reset();
-                confirmaAposta = false
             }         
     },
 
@@ -65,30 +67,36 @@ const game = {
 const aposta = {
 
     encerrarAposta(){
-        credito = credito + valor.value * multiplicadorAtual
-        credito.toFixed(2)
-        creditoVisual.innerText = `${credito}$`
-        btnConfirmaAposta.innerText = 'RETIRADO!'
-        console.log(`aposta encerrada com sucesso! retorno: ${valor.value*multiplicadorAtual}R$`)
-        Vela(multiplicadorAtual)
-        this.resetaAposta()
+        if(existeAposta && hitou == false){
+            existeAposta = false;
+            credito = credito + valor.value * multiplicadorAtual
+            creditoFormatado = credito.toFixed(2)
+            creditoVisual.innerText = `${creditoFormatado}$`
+            btnConfirmaAposta.innerText = 'RETIRADO!'
+            console.log(`aposta encerrada com sucesso! retorno: ${valor.value * multiplicadorAtual}R$`)
+            Vela(multiplicadorAtual)
+            this.resetaAposta()
+        }
     },
 
     decolou(){
         if(existeAposta && hitou){
-            existeAposta = false;
-            creditoVisual.innerText = `${credito}`
+            credito = credito
+            creditoFormatado = credito.toFixed(2)
+            creditoVisual.innerText = `${creditoFormatado}$`
             console.log('você perdeu!')
             console.log('seu saldo atua é de:', credito)
             Vela(multiplicadorAtual)
+            existeAposta = false;
             this.resetaAposta
             }
-             else if (existeAposta == false && hitou){
-                existeAposta = false;
-                creditoVisual.innerText = `${credito}`
-                Vela(multiplicadorAtual)
-                this.resetaAposta
-            }
+        else if (existeAposta == false && hitou){
+            creditoFormatado = credito.toFixed(2)
+            existeAposta = false;
+            creditoVisual.innerText = `${creditoFormatado}`
+            Vela(multiplicadorAtual)
+            this.resetaAposta
+        }
     },
 
     resetaAposta(){
@@ -97,13 +105,12 @@ const aposta = {
 
     criarAposta(){
         if(podeApostar){
+            valorApostado = valor.value
+            let novaAposta = new Registra(valorApostado)
+            podeApostar = false;
             mudaEscritaDoBotao()
-            creditoVisual.innerText = `${credito}R$`
-            let valorApostado = valor.value
-            let novaAposta = new Registra(valorApostado) 
-        } else  if(podeApostar == false && existeAposta){
+        } else if(podeApostar == false && existeAposta){
             aposta.encerrarAposta()
-            existeAposta = false;
         }
     },
 }
@@ -121,7 +128,8 @@ function Registra (valor){
     this.valordeAposta = valor;
     if(this.valordeAposta > 2 && this.valordeAposta <= credito && existeAposta == false){
         credito = credito - this.valordeAposta
-        creditoVisual.innerText = `${credito} R$`
+        creditoFormatado = credito.toFixed(2)
+        creditoVisual.innerText = `${creditoFormatado} R$`
         existeAposta = true;
         console.log("sua aposta foi feita no seguinte valor:", this.valordeAposta, "R$")     
     }
@@ -132,12 +140,11 @@ function Registra (valor){
 
 //essa função atualiza a quantidade de créditos disponivéis ao entrar na página
 function atualizaCreditoAoIniciar(){
-    creditoVisual.innerText = `${credito},00 R$`
+    creditoVisual.innerText = `${credito}`
 }
-atualizaCreditoAoIniciar();
 
+//função que cria viasualmente os multiplicadores anteriores
 function Vela(multiplicador){
-    if(historicoDeVelas.length < 20){
         if(multiplicador <= 2){
             this.multi = multiplicador;
             this.multiplicadorFinal = multi.toFixed(2)
@@ -171,16 +178,19 @@ function Vela(multiplicador){
             novaVela.innerHTML = this.multiplicadorFinal;
             divVelas.insertBefore(novaVela, primeiraVela)
         }
-    }
+
+        if(historicoDeVelas.length > 16){
+            let divVelas = document.getElementById('velas')
+            let ultimaVela = divVelas.lastChild
+            ultimaVela.remove();
+        }
 }
 
+//função que guarda os multiplicadores dentro de um array
 function guardaVelas(multiplicador){
     this.vela = multiplicador;
     historicoDeVelas.push(vela)
-    console.log(historicoDeVelas)
 }
-
-let historicoDeVelas = []
 
 //variável que guarda o setInterval da função start, portante responsável por "atualizar" o jogo
 let intervalo = setInterval(game.start, velocidadePadrao)
@@ -189,5 +199,6 @@ let intervalo = setInterval(game.start, velocidadePadrao)
 const verificacao = setInterval(game.random, Math.random() * 4000)
 
 
+atualizaCreditoAoIniciar();
 window.addEventListener('load', game.iniciaGame)
 btnConfirmaAposta.addEventListener('click', aposta.criarAposta)
