@@ -46,7 +46,7 @@ const game = {
                 resultadoFinal = multiplicadorAtual
             }
             if(existeAposta){
-                btnConfirmaAposta.innerText = 'RETIRAR'
+                btnConfirmaAposta.innerText = 'OUT'
              }
         },
 
@@ -91,7 +91,7 @@ const aposta = {
             console.log(resultado)
             creditoFormatado = credito.toFixed(2)
             creditoVisual.innerText = `${creditoFormatado}R$`
-            btnConfirmaAposta.innerText = 'RETIRADO!'
+            btnConfirmaAposta.innerText = 'ENDED!'
             console.log(`aposta encerrada com sucesso! retorno: ${valor.value * multiplicadorAtual}R$`)
             toast(resultado);
             this.resetaAposta()
@@ -135,7 +135,7 @@ const aposta = {
 //uma das funções resposáveis por mudar o visual e a funcionalidade do botão principal
 function mudaEscritaDoBotao(){
     if(click){
-        btnConfirmaAposta.innerText = 'AGUARDE'
+        btnConfirmaAposta.innerText = 'WAIT'
         btnConfirmaAposta.style.backgroundColor = 'rgb(236, 144, 57)'
     }
 }
