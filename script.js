@@ -14,6 +14,25 @@ let click = true;
 let resultadoFinal;
 let historicoDeVelas = []
 
+const btn5 = document.getElementById('valor-5');
+const btn10 = document.getElementById('valor-10');
+const btn20 = document.getElementById('valor-20');
+const btn50 = document.getElementById('valor-50');
+
+function apostaAuto5(){
+    valor.value = 5;
+}
+function apostaAuto10(){
+    valor.value = 10;
+}
+function apostaAuto20(){
+    valor.value = 20;
+}
+function apostaAuto50(){
+    valor.value = 50;
+}
+
+
 //variável referente a quantidade de millisegundos da variavel intervalo
 const velocidadePadrao = 100;
 
@@ -35,8 +54,6 @@ const game = {
 
         let randomNumber = Math.random() * 100;
         let hitNumber = Math.random() * 500;
-        console.log(hitNumber)
-        console.log(randomNumber)
             if(hitNumber < randomNumber && hitou == false){
                 hitou = true;
                 podeApostar = true;
@@ -70,11 +87,13 @@ const aposta = {
         if(existeAposta && hitou == false){
             existeAposta = false;
             credito = credito + valor.value * multiplicadorAtual
+            resultado = valor.value * multiplicadorAtual
+            console.log(resultado)
             creditoFormatado = credito.toFixed(2)
             creditoVisual.innerText = `${creditoFormatado}R$`
             btnConfirmaAposta.innerText = 'RETIRADO!'
             console.log(`aposta encerrada com sucesso! retorno: ${valor.value * multiplicadorAtual}R$`)
-            Vela(multiplicadorAtual)
+            toast(resultado);
             this.resetaAposta()
         }
     },
@@ -84,8 +103,6 @@ const aposta = {
             credito = credito
             creditoFormatado = credito.toFixed(2)
             creditoVisual.innerText = `${creditoFormatado}R$`
-            console.log('você perdeu!')
-            console.log('seu saldo atua é de:', credito)
             Vela(multiplicadorAtual)
             existeAposta = false;
             this.resetaAposta
@@ -198,6 +215,20 @@ let intervalo = setInterval(game.start, velocidadePadrao)
 //constante que guarda o setInterval da função random
 const verificacao = setInterval(game.random, 2000)
 
+
+function toast(resultado){
+    this.retorno = resultado.toFixed(2)
+    const toastLiveExample = document.getElementById('liveToast');
+    const toast = new bootstrap.Toast(toastLiveExample);
+    const writeOnToast = document.getElementById('toast-text')
+    writeOnToast.innerText = `Seu retorno foi de: ${this.retorno} R$`
+    toast.show()
+}
+
+btn5.addEventListener('click', apostaAuto5);
+btn10.addEventListener('click', apostaAuto10);
+btn20.addEventListener('click', apostaAuto20);
+btn50.addEventListener('click', apostaAuto50);
 
 atualizaCreditoAoIniciar();
 window.addEventListener('load', game.iniciaGame)

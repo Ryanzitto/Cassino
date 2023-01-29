@@ -8,23 +8,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="/script.js" defer ></script>
     <title>Cassino</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="nav-bar">
+    <div class="body-color">
+        <nav class="nav-bar">
+            <h1 id="page-title">Cassino</h1>
         <div id="credit-display">
             <img id ="icon-money" src="/icon-money.png" alt="icone gráfico representando uma moeda">
             <h1 id="credit">0000</h1>
         </div>
-        <button></button>
-        <button></button>
-    </nav>
+        </nav>
     <div>
         <div id="velas" class="velas-anteriores">
             <button id="primeira-vela"></button>
         </div>
     </div>
-    <main class="container">
+    <main class="container-multiplicador">
         <div class="display">   
             <p id="multiplicador-inicial">0.00X</p>
     </main>
@@ -36,12 +39,12 @@
                 </div>
                 <div class="btns-valores">
                     <div>
-                        <button class="btn-valor-fixo">1$</button>
-                        <button class="btn-valor-fixo">2$</button>
+                        <button id="valor-5" class="btn-valor-fixo">5$</button>
+                        <button id="valor-10" class="btn-valor-fixo">10$</button>
                     </div>
                     <div>
-                        <button class="btn-valor-fixo">5$</button>
-                        <button class="btn-valor-fixo">10$</button>
+                        <button id="valor-20" class="btn-valor-fixo">20$</button>
+                        <button id="valor-50" class="btn-valor-fixo">50$</button>
                     </div>
                 </div>
             </div>
@@ -54,19 +57,31 @@
                 </div>
                 <div class="btns-valores">
                     <div>
-                        <button class="btn-valor-fixo">1$</button>
-                        <button class="btn-valor-fixo">2$</button>
-                    </div>
-                    <div>
                         <button class="btn-valor-fixo">5$</button>
                         <button class="btn-valor-fixo">10$</button>
+                    </div>
+                    <div>
+                        <button class="btn-valor-fixo">20$</button>
+                        <button class="btn-valor-fixo">50$</button>
                     </div>
                 </div>
             </div>
             <button id="confirma-aposta2" class="confirma-aposta">BET</button>
         </div>
     </div>
-
-    <script src="/script.js" defer ></script>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+        <img id="icon-alert" src="/icon-money.png" class="rounded me-2" alt="...">
+        <strong class="me-auto">RETORNO DE APOSTA</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        <p id="toast-text"></p>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
