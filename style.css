@@ -14,7 +14,6 @@ body{
     height: 100vh;
     background: rgba(0, 0, 0, 0.288);
     background-size: cover;
-
 }
 
 .nav-bar{
@@ -292,79 +291,7 @@ cursor: pointer;
     font-weight: 500;
 }
 
-/* max-width  */
-@media screen and (min-width: 401px) and (max-width: 600px) {
-    .painel-container {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-    height: 400px;
-    flex-direction: column;
-}
-
-#page-title {
-    margin-right: 70px;
-    align-self: center;
-    color: white;
-    font-family: 'Lobster', cursive;
-    font-size: 35px;
-}
-
-#multiplicador-inicial {
-    color: white;
-    text-align: center;
-    padding-top: 60px;
-    font-size: 3.5em;
-    font-family: 'Mulish', sans-serif;
-}
-
-.painel {
-    width: 100%;
-    height: 230px;
-    background-color: rgba(60, 61, 61, 0.979);
-    border-radius: 25px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.container-multiplicador {
-    width: 79%;
-    height: 40%;
-    border-radius: 25px;
-    background-color: rgba(60, 61, 61, 0.979);
-    margin: 0 auto;
-}
-
-.confirma-aposta{
-    border: none;
-    border-radius: 25px;
-    height: 50px;
-    width: 40%;
-    align-self: center;
-    background-color: rgb(24, 248, 43);
-    color: white;
-    font-size: 30px;
-    }
-
-    #credit-display {
-        color: white;
-        margin-right: 30px;
-        align-self: center;
-        background-color: rgb(247, 186, 21);
-        border-radius: 10px;
-        display: flex;
-        justify-content: space-evenly;
-        width: 175px;
-        height: 35px;
-    }
-
-}
-
-/* max-width  */
+/* max-width 400px  */
 @media screen and (max-width: 400px) {
     .painel-container {
     margin: 0 auto;
@@ -378,7 +305,7 @@ cursor: pointer;
 #multiplicador-inicial {
     color: white;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 30px;
     font-size: 3.5em;
     font-family: 'Mulish', sans-serif;
 }
@@ -405,7 +332,7 @@ cursor: pointer;
 
 .container-multiplicador {
     width: 79%;
-    height: 40%;
+    height: 20%;
     border-radius: 25px;
     background-color: rgba(60, 61, 61, 0.979);
     margin: 0 auto;
@@ -422,6 +349,162 @@ cursor: pointer;
     font-size: 30px;
     }
     
+    .confirma-aposta:hover{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 40%;
+        align-self: center;
+        background-color: rgba(46, 238, 62, 0.945);
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        }
+        
+    .confirma-aposta-modificado{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 20%;
+        align-self: center;
+        background-color: rgb(236, 144, 57);
+        color: white;
+        }
+        .confirma-aposta-modificado:hover{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 40%;;
+        align-self: center;
+        background-color: rgb(241, 158, 79);
+        color: white;
+        cursor: pointer;
+        }
+    
+    #credit-display {
+        color: white;
+        margin-right: 30px;
+        align-self: center;
+        background-color: rgb(247, 186, 21);
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        width: 175px;
+        height: 35px;
+    }
+}
+
+/* max-width  */
+@media screen and (min-width: 401px) and (max-width: 800px) {
+    .painel-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 400px;
+    flex-direction: column;
+}
+
+#page-title {
+    margin-right: 70px;
+    align-self: center;
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+}
+
+#multiplicador-inicial {
+    color: white;
+    text-align: center;
+    padding-top: 32px;
+    font-size: 3.5em;
+    font-family: 'Mulish', sans-serif;
+}
+
+.painel {
+    width: 100%;
+    height: 230px;
+    background-color: rgba(60, 61, 61, 0.979);
+    border-radius: 25px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.container-multiplicador {
+    width: 79%;
+    height: 20%;
+    border-radius: 25px;
+    background-color: rgba(60, 61, 61, 0.979);
+    margin: 0 auto;
+}
+
+.confirma-aposta{
+    border: none;
+    border-radius: 25px;
+    height: 50px;
+    width: 40%;
+    align-self: center;
+    background-color: rgb(24, 248, 43);
+    color: white;
+    font-size: 30px;
+    }
+    
+    .confirma-aposta:hover{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 40%;
+        align-self: center;
+        background-color: rgba(46, 238, 62, 0.945);
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        }
+        
+    .confirma-aposta-modificado{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 20%;
+        align-self: center;
+        background-color: rgb(236, 144, 57);
+        color: white;
+        }
+        .confirma-aposta-modificado:hover{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 40%;;
+        align-self: center;
+        background-color: rgb(241, 158, 79);
+        color: white;
+        cursor: pointer;
+        }
+    .confirma-aposta-modificado{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 40%;
+        align-self: center;
+        background-color: rgb(236, 144, 57);
+        color: white;
+        font-size: 30px;
+        }
+        .confirma-aposta-modificado:hover{
+        border: none;
+        border-radius: 25px;
+        height: 50px;
+        width: 40%;;
+        align-self: center;
+        background-color: rgb(241, 158, 79);
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        }
+
     #credit-display {
         color: white;
         margin-right: 30px;
@@ -436,7 +519,7 @@ cursor: pointer;
 
 }
 
-@media screen and (min-width: 601px) and (max-width: 1000px) {
+@media screen and (min-width: 801px) and (max-width: 1000px) {
     .painel-container {
         margin: 0 auto;
         display: flex;
@@ -449,7 +532,6 @@ cursor: pointer;
     #multiplicador-inicial {
         color: white;
         text-align: center;
-        padding-top: 60px;
         font-size: 3.5em;
         font-family: 'Mulish', sans-serif;
     }
@@ -478,6 +560,13 @@ cursor: pointer;
         height: 35px;
     }
 
+    #page-title {
+        margin-right: 450px;
+        align-self: center;
+        color: white;
+        font-family: 'Lobster', cursive;
+        font-size: 35px;
+    }
 }
 
 @media screen and (min-width: 1000px){
